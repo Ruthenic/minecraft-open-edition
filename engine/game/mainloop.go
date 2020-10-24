@@ -4,7 +4,7 @@ import (
 	"log"
 	"runtime"
 
-	"github.com/Broyojo/minecraft-go-edition/engine/render"
+	"github.com/Broyojo/minecraft-open-edition/engine/render"
 	"github.com/go-gl/gl/v4.6-core/gl"
 	"github.com/go-gl/glfw/v3.3/glfw"
 )

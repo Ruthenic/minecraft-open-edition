@@ -6,8 +6,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/Broyojo/minecraft-go-edition/engine/game"
-	"github.com/Broyojo/minecraft-go-edition/engine/voxel"
+	"github.com/Broyojo/minecraft-open-edition/engine/game"
+	"github.com/Broyojo/minecraft-open-edition/engine/voxel"
 )
 
 func main() {

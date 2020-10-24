@@ -1,4 +1,4 @@
-module github.com/Broyojo/minecraft-go-edition
+module github.com/Broyojo/minecraft-open-edition
 
 go 1.15
 
