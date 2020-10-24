@@ -22,6 +22,10 @@ func Run() error {
 		return err
 	}
 	defer glfw.Terminate()
+	shader, err := render.NewShader("assets/shaders/vertex.vert", "assets/shaders/fragment.frag")
+	if err != nil {
+		return err
+	}
 
 	// main game loop
 	for !window.ShouldClose() {
@@ -30,6 +34,7 @@ func Run() error {
 		gl.Clear(gl.COLOR_BUFFER_BIT)
 
 		/**game logic**/
+		shader.Use()
 
 		// plumbing
 		glfw.PollEvents()
