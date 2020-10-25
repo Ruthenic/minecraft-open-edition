@@ -4,11 +4,16 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
+	"runtime"
 	"time"
 
 	"github.com/Broyojo/minecraft-open-edition/engine/game"
 	"github.com/Broyojo/minecraft-open-edition/engine/voxel"
 )
+
+func init() {
+	runtime.LockOSThread() // OpenGL and GLFW must run on main os thread
+}
 
 func main() {
 	rand.Seed(time.Now().UnixNano())
@@ -17,7 +22,6 @@ func main() {
 
 	fmt.Println(c.Blocks[4][5][6])
 
-	game.Setup()
 	if err := game.Run(); err != nil {
 		log.Fatal(err)
 	}

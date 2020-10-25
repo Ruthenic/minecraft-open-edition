@@ -1,19 +1,10 @@
 package game
 
 import (
-	"log"
-	"runtime"
-
 	"github.com/Broyojo/minecraft-open-edition/engine/render"
 	"github.com/go-gl/gl/v4.6-core/gl"
 	"github.com/go-gl/glfw/v3.3/glfw"
 )
-
-// Setup - setup for game
-func Setup() {
-	log.Println("starting game...")
-	runtime.LockOSThread() // OpenGL and GLFW must run on main os thread
-}
 
 // Run - runs the game
 func Run() error {
@@ -22,6 +13,7 @@ func Run() error {
 		return err
 	}
 	defer glfw.Terminate()
+
 	shader, err := render.NewShader("assets/shaders/vertex.vert", "assets/shaders/fragment.frag")
 	if err != nil {
 		return err
