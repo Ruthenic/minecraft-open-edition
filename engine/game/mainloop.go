@@ -1,6 +1,8 @@
 package game
 
 import (
+	"log"
+
 	"github.com/Broyojo/minecraft-open-edition/engine/render"
 	"github.com/go-gl/gl/v4.6-core/gl"
 	"github.com/go-gl/glfw/v3.3/glfw"
@@ -19,14 +21,32 @@ func Run() error {
 		return err
 	}
 
+	vertices := []float32{
+		0.5, 0.5, 0,
+		0.5, -0.5, 0,
+		-0.5, -0.5, 0,
+		-0.5, 0.5, 0,
+	}
+
+	indices := []uint32{
+		0, 1, 3,
+		1, 2, 3,
+	}
+
+	mesh := render.NewMesh(vertices, indices, gl.STATIC_DRAW)
+
+	log.Printf("Loaded mesh %v with %v vertices and %v triangles", mesh.VAO, mesh.VertexCount(), mesh.TriangleCount())
+
 	// main game loop
 	for !window.ShouldClose() {
 		// backround
-		gl.ClearColor(1.0, 1.0, 1.0, 1.0)
+		gl.ClearColor(0.5, 0.5, 0.5, 1)
 		gl.Clear(gl.COLOR_BUFFER_BIT)
 
 		/**game logic**/
 		shader.Use()
+		mesh.Draw(gl.FILL)
+		// mesh.Draw(gl.LINE)
 
 		// plumbing
 		glfw.PollEvents()
