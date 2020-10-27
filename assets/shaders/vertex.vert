@@ -1,9 +1,12 @@
 #version 460 core
 
 in vec3 vertex;
-out vec4 color;
+out vec3 color;
+
+uniform float yOff;
+uniform float blueValue;
 
 void main() {
-    gl_Position = vec4(vertex, 1);
-    color = vec4(1, 0, 0, 1);
+    gl_Position = vec4(vertex.x, vertex.y + yOff, vertex.z, 1);
+    color = vec3(1, 0, blueValue);
 }

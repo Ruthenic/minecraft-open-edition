@@ -89,3 +89,15 @@ func CompileShader(source string, xtype uint32) (uint32, error) {
 	}
 	return shader, nil
 }
+
+// SetInt - sets an int uniform
+func (s *Shader) SetInt(name string, value int32) {
+	location := gl.GetUniformLocation(s.ID, gl.Str(name+"\x00"))
+	gl.Uniform1i(location, value)
+}
+
+// SetFloat - sets a float uniform
+func (s *Shader) SetFloat(name string, value float32) {
+	location := gl.GetUniformLocation(s.ID, gl.Str(name+"\x00"))
+	gl.Uniform1f(location, value)
+}

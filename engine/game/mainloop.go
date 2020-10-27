@@ -2,6 +2,7 @@ package game
 
 import (
 	"log"
+	"math"
 
 	"github.com/Broyojo/minecraft-open-edition/engine/render"
 	"github.com/go-gl/gl/v4.6-core/gl"
@@ -47,6 +48,9 @@ func Run() error {
 		shader.Use()
 		mesh.Draw(gl.FILL)
 		// mesh.Draw(gl.LINE)
+
+		shader.SetFloat("yOff", float32(math.Sin(glfw.GetTime())/5))
+		shader.SetFloat("blueValue", float32(math.Sin(glfw.GetTime())))
 
 		// plumbing
 		glfw.PollEvents()
